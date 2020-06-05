@@ -1,8 +1,11 @@
 name: CustomTownyUpkeep
 version: @version@
 main: it.forgottenworld.customtownyupkeep.CustomTownyUpkeep
-api-version: 1.13
 depend: [Towny]
 authors: [tigierrei]
 description: Customize towns upkeep
 website: https://forgottenworld.it
+commands:
+  ctu:
+    permission: ctu.admin
+    default: op

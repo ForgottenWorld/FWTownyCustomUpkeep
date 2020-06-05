@@ -3,6 +3,6 @@ towns-list:
   exampleTown1: 1
   exampleTown2: 1
 #Nations with custom upkeep
-Nations-list:
+nations-list:
   exampleNation1: 1
   exampleNation2: 1
