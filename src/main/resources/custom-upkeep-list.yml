@@ -1,8 +1,16 @@
 #Towns with custom upkeep
 towns-list:
-  exampleTown1: 1
-  exampleTown2: 1
+  exampleTown1:
+    upkeep: 1
+    override: false
+  exampleTown2:
+    upkeep: 1
+    override: false
 #Nations with custom upkeep
 nations-list:
-  exampleNation1: 1
-  exampleNation2: 1
+  exampleNation1:
+    upkeep: 1
+    override: false
+  exampleNation2:
+    upkeep: 1
+    override: false

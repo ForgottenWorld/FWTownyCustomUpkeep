@@ -1,27 +1,24 @@
 package it.forgottenworld.customtownyupkeep;
 
-import com.palmergames.bukkit.towny.event.NationUpkeepCalculationEvent;
-import com.palmergames.bukkit.towny.event.TownUpkeepCalculationEvent;
+import it.forgottenworld.customtownyupkeep.commands.CtuCommand;
+import it.forgottenworld.customtownyupkeep.listeners.TownyListener;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public final class CustomTownyUpkeep extends JavaPlugin implements Listener {
+public final class CustomTownyUpkeep extends JavaPlugin{
 
-    public static CustomTownyUpkeep instance;
+    public static CustomTownyUpkeep INSTANCE;
     private Config customUpkeepList;
 
     @Override
     public void onEnable() {
-        instance = this;
+        INSTANCE = this;
         try {
             loadConfig();
-            Bukkit.getPluginManager().registerEvents(this, this);
+            Bukkit.getPluginManager().registerEvents(new TownyListener(), this);
             Objects.requireNonNull(this.getCommand("ctu")).setExecutor(new CtuCommand());
         } catch (IOException e) {
             e.printStackTrace();
@@ -29,25 +26,11 @@ public final class CustomTownyUpkeep extends JavaPlugin implements Listener {
 
     }
 
-    @EventHandler
-    public void onTownUpkeepsCalculated(TownUpkeepCalculationEvent event) {
-        ConfigurationSection townsTaxes = customUpkeepList.getConfig().getConfigurationSection("towns-list");
-        assert townsTaxes != null;
-        if (townsTaxes.contains(event.getTown().getName())) {
-            event.setUpkeep(event.getUpkeep() * townsTaxes.getDouble(event.getTown().getName()));
-        }
-    }
-
-    @EventHandler
-    public void onNationUpkeepsCalculated(NationUpkeepCalculationEvent event) {
-        ConfigurationSection nationsTaxes = customUpkeepList.getConfig().getConfigurationSection("nations-list");
-        assert nationsTaxes != null;
-        if (nationsTaxes.contains(event.getNation().getName())) {
-            event.setUpkeep(event.getUpkeep() * nationsTaxes.getDouble(event.getNation().getName()));
-        }
-    }
-
     public void loadConfig() throws IOException {
         customUpkeepList = new Config("custom-upkeep-list.yml", this);
+    }
+
+    public Config getCustomUpkeepList() {
+        return customUpkeepList;
     }
 }
