@@ -3,7 +3,8 @@ package it.forgottenworld.customtownyupkeep.listeners;
 import com.palmergames.bukkit.towny.event.NationUpkeepCalculationEvent;
 import com.palmergames.bukkit.towny.event.TownUpkeepCalculationEvent;
 import it.forgottenworld.customtownyupkeep.CustomTownyUpkeep;
-import it.forgottenworld.customtownyupkeep.api.events.CustomUpkeepCalculationEvent;
+import it.forgottenworld.customtownyupkeep.api.events.CustomNationUpkeepCalculationEvent;
+import it.forgottenworld.customtownyupkeep.api.events.CustomTownUpkeepCalculationEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.EventHandler;
@@ -22,7 +23,10 @@ public class TownyListener implements Listener {
                 return;
             }
         }
-        Bukkit.getPluginManager().callEvent(new CustomUpkeepCalculationEvent(event.getUpkeep()));
+        Bukkit.getScheduler().callSyncMethod(CustomTownyUpkeep.INSTANCE,()->{
+            Bukkit.getPluginManager().callEvent(new CustomTownUpkeepCalculationEvent(event.getTown(), event.getUpkeep()));
+            return null;
+        });
     }
 
     @EventHandler
@@ -36,6 +40,9 @@ public class TownyListener implements Listener {
                 return;
             }
         }
-        Bukkit.getPluginManager().callEvent(new CustomUpkeepCalculationEvent(event.getUpkeep()));
+        Bukkit.getScheduler().callSyncMethod(CustomTownyUpkeep.INSTANCE,()->{
+            Bukkit.getPluginManager().callEvent(new CustomNationUpkeepCalculationEvent(event.getNation(), event.getUpkeep()));
+            return null;
+        });
     }
 }
