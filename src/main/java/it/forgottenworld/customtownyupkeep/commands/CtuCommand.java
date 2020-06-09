@@ -97,7 +97,6 @@ public class  CtuCommand implements CommandExecutor, TabCompleter {
         if(args.length == 1){
             return Arrays.asList("reload","set");
         }else if(args.length == 2 && args[0].equalsIgnoreCase("set")){
-            sender.sendMessage("OK");
             return Arrays.asList("town", "nation");
         }else if(args.length == 3) {
             if (args[1].equalsIgnoreCase("town")) {
