@@ -25,6 +25,11 @@ public class  CtuCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull org.bukkit.command.Command command, @NotNull String label, @NotNull String[] args) {
+        if(sender instanceof Player){
+            if(!sender.isOp() || !sender.hasPermission("ctu.admin")){
+                sender.sendMessage(ChatColor.RED + "You don't have the permissions to run that command!");
+            }
+        }
         if(args.length > 0){
             if(args[0].equalsIgnoreCase("reload")){
                 try{
