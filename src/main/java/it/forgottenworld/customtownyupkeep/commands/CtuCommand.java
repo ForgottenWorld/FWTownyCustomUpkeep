@@ -28,6 +28,7 @@ public class  CtuCommand implements CommandExecutor, TabCompleter {
         if(sender instanceof Player){
             if(!sender.isOp() || !sender.hasPermission("ctu.admin")){
                 sender.sendMessage(ChatColor.RED + "You don't have the permissions to run that command!");
+                return true;
             }
         }
         if(args.length > 0){
