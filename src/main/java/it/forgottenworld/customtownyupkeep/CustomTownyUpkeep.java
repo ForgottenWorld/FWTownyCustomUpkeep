@@ -19,7 +19,9 @@ public final class CustomTownyUpkeep extends JavaPlugin{
         try {
             loadConfig();
             Bukkit.getPluginManager().registerEvents(new TownyListener(), this);
-            Objects.requireNonNull(this.getCommand("ctu")).setExecutor(new CtuCommand());
+            CtuCommand command = new CtuCommand();
+            Objects.requireNonNull(this.getCommand("ctu")).setExecutor(command);
+            Objects.requireNonNull(this.getCommand("ctu")).setTabCompleter(command);
         } catch (IOException e) {
             e.printStackTrace();
         }
