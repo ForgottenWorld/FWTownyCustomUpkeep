@@ -3,6 +3,7 @@ version: @version@
 main: it.forgottenworld.customtownyupkeep.CustomTownyUpkeep
 depend: [Towny]
 authors: [tigierrei]
+api-version: 1.16
 description: Customize towns upkeep
 website: https://forgottenworld.it
 commands:
