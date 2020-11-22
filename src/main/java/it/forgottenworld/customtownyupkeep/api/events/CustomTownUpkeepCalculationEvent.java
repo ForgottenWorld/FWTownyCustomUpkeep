@@ -1,5 +1,6 @@
 package it.forgottenworld.customtownyupkeep.api.events;
 
+import com.palmergames.bukkit.towny.event.TownUpkeepCalculationEvent;
 import com.palmergames.bukkit.towny.object.Town;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -8,12 +9,10 @@ import org.jetbrains.annotations.NotNull;
 public class CustomTownUpkeepCalculationEvent extends Event {
 
     private static final HandlerList HANDLERS = new HandlerList();
-    private double upkeep;
-    private final Town town;
+    private final TownUpkeepCalculationEvent event;
 
-    public CustomTownUpkeepCalculationEvent(Town town, double upkeep) {
-        this.town = town;
-        this.upkeep = upkeep;
+    public CustomTownUpkeepCalculationEvent(TownUpkeepCalculationEvent event) {
+        this.event = event;
     }
 
     @Override
@@ -22,14 +21,14 @@ public class CustomTownUpkeepCalculationEvent extends Event {
     }
 
     public Town getTown() {
-        return town;
+        return event.getTown();
     }
 
     public double getUpkeep() {
-        return upkeep;
+        return event.getUpkeep();
     }
 
     public void setUpkeep(double upkeep) {
-        this.upkeep = upkeep;
+        this.event.setUpkeep(upkeep);
     }
 }

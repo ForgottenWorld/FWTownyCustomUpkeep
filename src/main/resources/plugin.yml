@@ -1,6 +1,6 @@
-name: CustomTownyUpkeep
+name: FWTownyCustomUpkeek
 version: @version@
-main: it.forgottenworld.customtownyupkeep.CustomTownyUpkeep
+main: it.forgottenworld.customtownyupkeep.FWTownyCustomUpkeep
 depend: [Towny]
 authors: [tigierrei]
 api-version: 1.16

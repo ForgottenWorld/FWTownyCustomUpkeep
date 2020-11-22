@@ -8,9 +8,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.IOException;
 import java.util.Objects;
 
-public final class CustomTownyUpkeep extends JavaPlugin{
+public final class TownyCustomUpkeep extends JavaPlugin{
 
-    public static CustomTownyUpkeep INSTANCE;
+    public static TownyCustomUpkeep INSTANCE;
     private Config customUpkeepList;
 
     @Override

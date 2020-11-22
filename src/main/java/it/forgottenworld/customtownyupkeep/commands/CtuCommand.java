@@ -5,7 +5,7 @@ import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
 import com.palmergames.bukkit.towny.object.Nation;
 import com.palmergames.bukkit.towny.object.Town;
 import it.forgottenworld.customtownyupkeep.Config;
-import it.forgottenworld.customtownyupkeep.CustomTownyUpkeep;
+import it.forgottenworld.customtownyupkeep.TownyCustomUpkeep;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -34,7 +34,7 @@ public class  CtuCommand implements CommandExecutor, TabCompleter {
         if(args.length > 0){
             if(args[0].equalsIgnoreCase("reload")){
                 try{
-                    CustomTownyUpkeep.INSTANCE.loadConfig();
+                    TownyCustomUpkeep.INSTANCE.loadConfig();
                     sender.sendMessage(ChatColor.GREEN + "Config reloaded!");
                 }catch (IOException e){
                     sender.sendMessage(ChatColor.DARK_RED + "Error while reloading the config. See console for further information");
@@ -45,7 +45,7 @@ public class  CtuCommand implements CommandExecutor, TabCompleter {
                     if(args[1].equalsIgnoreCase("town")){
                         try {
                             Town town = TownyAPI.getInstance().getDataSource().getTown(args[2]);
-                            Config config = CustomTownyUpkeep.INSTANCE.getCustomUpkeepList();
+                            Config config = TownyCustomUpkeep.INSTANCE.getCustomUpkeepList();
                             ConfigurationSection townConfig = config.getConfig().getConfigurationSection("towns-list").createSection(town.getName());
                             townConfig.set("upkeep", Double.parseDouble(args[3]));
                             if(args.length > 4){
@@ -58,7 +58,7 @@ public class  CtuCommand implements CommandExecutor, TabCompleter {
                     }else if(args[1].equalsIgnoreCase("nation")){
                         try{
                             Nation nation = TownyAPI.getInstance().getDataSource().getNation(args[2]);
-                            Config config = CustomTownyUpkeep.INSTANCE.getCustomUpkeepList();
+                            Config config = TownyCustomUpkeep.INSTANCE.getCustomUpkeepList();
                             ConfigurationSection nationConfig = config.getConfig().getConfigurationSection("nations-list").createSection(nation.getName());
                             nationConfig.set("upkeep", Double.parseDouble(args[3]));
                             if(args.length > 4){
