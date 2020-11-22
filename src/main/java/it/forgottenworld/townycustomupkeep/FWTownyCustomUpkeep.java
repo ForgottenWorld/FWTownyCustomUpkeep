@@ -1,16 +1,16 @@
-package it.forgottenworld.customtownyupkeep;
+package it.forgottenworld.townycustomupkeep;
 
-import it.forgottenworld.customtownyupkeep.commands.CtuCommand;
-import it.forgottenworld.customtownyupkeep.listeners.TownyListener;
+import it.forgottenworld.townycustomupkeep.commands.CtuCommand;
+import it.forgottenworld.townycustomupkeep.listeners.TownyListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public final class TownyCustomUpkeep extends JavaPlugin{
+public final class FWTownyCustomUpkeep extends JavaPlugin{
 
-    public static TownyCustomUpkeep INSTANCE;
+    public static FWTownyCustomUpkeep INSTANCE;
     private Config customUpkeepList;
 
     @Override

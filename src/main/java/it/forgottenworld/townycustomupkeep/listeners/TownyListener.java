@@ -1,10 +1,10 @@
-package it.forgottenworld.customtownyupkeep.listeners;
+package it.forgottenworld.townycustomupkeep.listeners;
 
 import com.palmergames.bukkit.towny.event.NationUpkeepCalculationEvent;
 import com.palmergames.bukkit.towny.event.TownUpkeepCalculationEvent;
-import it.forgottenworld.customtownyupkeep.TownyCustomUpkeep;
-import it.forgottenworld.customtownyupkeep.api.events.CustomNationUpkeepCalculationEvent;
-import it.forgottenworld.customtownyupkeep.api.events.CustomTownUpkeepCalculationEvent;
+import it.forgottenworld.townycustomupkeep.FWTownyCustomUpkeep;
+import it.forgottenworld.townycustomupkeep.api.events.CustomNationUpkeepCalculationEvent;
+import it.forgottenworld.townycustomupkeep.api.events.CustomTownUpkeepCalculationEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.EventHandler;
@@ -14,7 +14,7 @@ public class TownyListener implements Listener {
 
     @EventHandler
     public void onTownUpkeepCalculated(TownUpkeepCalculationEvent event) {
-        ConfigurationSection townsTaxes = TownyCustomUpkeep.INSTANCE.getCustomUpkeepList().getConfig().getConfigurationSection("towns-list");
+        ConfigurationSection townsTaxes = FWTownyCustomUpkeep.INSTANCE.getCustomUpkeepList().getConfig().getConfigurationSection("towns-list");
         assert townsTaxes != null;
         if (townsTaxes.contains(event.getTown().getName())) {
             ConfigurationSection townSection = townsTaxes.getConfigurationSection(event.getTown().getName());
@@ -23,7 +23,7 @@ public class TownyListener implements Listener {
                 return;
             }
         }
-        Bukkit.getScheduler().callSyncMethod(TownyCustomUpkeep.INSTANCE,()->{
+        Bukkit.getScheduler().callSyncMethod(FWTownyCustomUpkeep.INSTANCE,()->{
             Bukkit.getPluginManager().callEvent(new CustomTownUpkeepCalculationEvent(event));
             return null;
         });
@@ -31,7 +31,7 @@ public class TownyListener implements Listener {
 
     @EventHandler
     public void onNationUpkeepCalculated(NationUpkeepCalculationEvent event) {
-        ConfigurationSection nationsTaxes = TownyCustomUpkeep.INSTANCE.getCustomUpkeepList().getConfig().getConfigurationSection("nations-list");
+        ConfigurationSection nationsTaxes = FWTownyCustomUpkeep.INSTANCE.getCustomUpkeepList().getConfig().getConfigurationSection("nations-list");
         assert nationsTaxes != null;
         if (nationsTaxes.contains(event.getNation().getName())) {
             ConfigurationSection nationSection = nationsTaxes.getConfigurationSection(event.getNation().getName());
@@ -40,7 +40,7 @@ public class TownyListener implements Listener {
                 return;
             }
         }
-        Bukkit.getScheduler().callSyncMethod(TownyCustomUpkeep.INSTANCE,()->{
+        Bukkit.getScheduler().callSyncMethod(FWTownyCustomUpkeep.INSTANCE,()->{
             Bukkit.getPluginManager().callEvent(new CustomNationUpkeepCalculationEvent(event));
             return null;
         });

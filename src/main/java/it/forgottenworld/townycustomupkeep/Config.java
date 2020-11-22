@@ -1,4 +1,4 @@
-package it.forgottenworld.customtownyupkeep;
+package it.forgottenworld.townycustomupkeep;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;

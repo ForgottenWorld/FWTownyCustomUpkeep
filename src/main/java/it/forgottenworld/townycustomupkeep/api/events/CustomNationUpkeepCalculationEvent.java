@@ -1,8 +1,7 @@
-package it.forgottenworld.customtownyupkeep.api.events;
+package it.forgottenworld.townycustomupkeep.api.events;
 
 import com.palmergames.bukkit.towny.event.NationUpkeepCalculationEvent;
 import com.palmergames.bukkit.towny.object.Nation;
-import com.palmergames.bukkit.towny.object.Town;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;

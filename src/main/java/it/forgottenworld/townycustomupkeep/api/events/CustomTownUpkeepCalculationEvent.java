@@ -1,4 +1,4 @@
-package it.forgottenworld.customtownyupkeep.api.events;
+package it.forgottenworld.townycustomupkeep.api.events;
 
 import com.palmergames.bukkit.towny.event.TownUpkeepCalculationEvent;
 import com.palmergames.bukkit.towny.object.Town;
