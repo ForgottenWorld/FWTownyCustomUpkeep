@@ -8,11 +8,12 @@ import it.forgottenworld.townycustomupkeep.api.events.CustomTownUpkeepCalculatio
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 
 public class TownyListener implements Listener {
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onTownUpkeepCalculated(TownUpkeepCalculationEvent event) {
         ConfigurationSection townsTaxes = FWTownyCustomUpkeep.INSTANCE.getCustomUpkeepList().getConfig().getConfigurationSection("towns-list");
         assert townsTaxes != null;
@@ -29,7 +30,7 @@ public class TownyListener implements Listener {
         });
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onNationUpkeepCalculated(NationUpkeepCalculationEvent event) {
         ConfigurationSection nationsTaxes = FWTownyCustomUpkeep.INSTANCE.getCustomUpkeepList().getConfig().getConfigurationSection("nations-list");
         assert nationsTaxes != null;
